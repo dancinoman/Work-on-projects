@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Pathfinder Classes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+h1 {
+    color:white;
+    font-family:verdana;
+    font-size:200%;
+    padding:20px;
+
+}
+body{background-color: #000044; text-align:center;}
+
+p {
+    color:white;
+    font-family:verdana;
+    font-size:150%;
+}
+/*all below is a style for the menu*/
+#menu{
+      border: red 2px solid;
+      background-color: #303098
+
+    }
+ul{
+  padding-left:30px;
+  widht-max: 300px;
+}
+
+li {
+       font-size:45px;
+       display:inline;
+       overflow: hidden;
+       list-style:none;
+       margin: inherit;
+  }
+
+li a {
+
+   padding:20px;
+   color:black;
+   text-decoration: none;
+
+}
+
+li a:hover{
+         background-color:white;
+         text-decoration: none;
+}
+
+
+
+a.default:visited{
+         color:pink
+         }
+a.default:link{
+       color:#307070;
+       text-decoration:none;
+      }
+a.default:hover{
+        color:orange;
+        text-decoration:underline;
+       }
+
+
+</style>
+</head>
+<body>
+<div id="menu">
+
+<p>
+    <ul>
+      <li ><a href="#Home">Home</a></li>
+      <li><a href="#Characters">Characters Sheet</a></li>
+      <li><a href="#Marketplace">Markeplace</a></li>
+      <li><a href="#Compendium">Compendium</a></li>
+      <li><a href="#Wiki">Wiki RPG</a></li>
+      <li><a href="#Forum">Forum</a></li>
+    </ul>
+</p>
+
+</div>
+
+
+    <h1><b> Welcome to my very own page!</b></h1>
+        <p> This is my site just to test my skills.<br><br>Thank you!<br><br>
+        Please, click on this site <a class="default" href="http://paizo.com/pathfinderRPG/prd/coreRulebook/gamemastering.html" target="_blank">Gamemastering with pathfinder</a>.<br><br>
+        You could choose the class you want to visit</p>
+
+
+    <p><select onchange="character(value)">
+     <option value ="0">Barbarian</option>
+     <option value ="1">Bard</option>
+     <option value ="2">Cleric</option>
+     <option value ="3">Druid</option>
+     <option value ="4">Fighter</option>
+     <option value ="5">Monk</option>
+     <option value ="6">Paladin</option>
+     <option value ="7">Ranger</option>
+     <option value ="8">Rogue</option>
+     <option value ="9">Sorcerer</option>
+     <option value ="10">Wizard</option></select></p>
+
+      <script type="text/javascript">
+       function character(sw)
+          {
+            // barbarian selection
+            if(sw == 0)
+            {
+            document.getElementById("image").src = "https://aslancross.files.wordpress.com/2008/08/pathfinderbarbarian.jpg";
+            document.getElementById("image").style = "width:300px;height:500px";
+            document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/barbarian/";
+            window.scrollTo(0, document.body.scrollHeight);
+            }
+            // bard selection
+            else if( sw == 1)
+            {
+              document.getElementById("image").src = "http://d20pfsrd.opengamingnetwork.com/wp-content/uploads/sites/12/2017/01/bard_comm_by_yamao-d5ooj9w-320-2.png";
+              document.getElementById("image").style = "width:350px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/bard/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // cleric selection
+            else if( sw == 2)
+            {
+              document.getElementById("image").src = "http://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/01/cleric_comm_by_yamao-d5ooj81-320-2.png";
+              document.getElementById("image").style = "width:400px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/cleric/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // druid selection
+            else if( sw == 3)
+            {
+              document.getElementById("image").src = "http://img.4plebs.org/boards/tg/image/1401/07/1401072392449.jpg";
+              document.getElementById("image").style = "width:400px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/druid/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // fighter selection
+            else if( sw == 4)
+            {
+              document.getElementById("image").src = "http://68.media.tumblr.com/94fa6c97216f265bfd3de5d12dff11af/tumblr_n2q30bN3Ae1s7x60do1_1280.jpg";
+              document.getElementById("image").style = "width:350px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/fighter/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // monk selection
+            else if( sw == 5)
+            {
+              document.getElementById("image").src = "http://d20pfsrd.opengamingnetwork.com/wp-content/uploads/sites/12/2017/01/Pathfinder-Darius-by-Yama-320-2.png";
+              document.getElementById("image").style = "width:300px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/monk/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // paladin selection
+            else if( sw == 6)
+            {
+              document.getElementById("image").src = "https://s-media-cache-ak0.pinimg.com/736x/84/0a/a6/840aa6026393d8ab878048e62498876a.jpg";
+              document.getElementById("image").style = "width:300px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/paladin/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // ranger selection
+            else if( sw == 7)
+            {
+              document.getElementById("image").src = "http://vignette1.wikia.nocookie.net/pathfinder/images/8/89/Harsk.jpg/revision/latest?cb=20080602015800";
+              document.getElementById("image").style = "width:350px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/ranger/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // rogue selection
+            else if( sw == 8)
+            {
+              document.getElementById("image").src = "https://sites.google.com/site/pathfinderogc/_/rsrc/1487036777825/images/rogue__comm_by_yamaorce-d88oizc-320.png";
+              document.getElementById("image").style = "width:300px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/rogue/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // sorcerer selection
+            else if( sw == 9)
+            {
+              document.getElementById("image").src = "http://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/03/sorceress_by_yamaorce-db2aktf.jpg";
+              document.getElementById("image").style = "width:350px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/sorcerer/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+            // wizard selection
+            else if( sw == 10)
+            {
+              document.getElementById("image").src = "https://s-media-cache-ak0.pinimg.com/736x/22/d3/0a/22d30a9e1b867c5a2971d48f87c860da.jpg";
+              document.getElementById("image").style = "width:350px;height:500px";
+              document.getElementById("linkPage").href = "http://www.d20pfsrd.com/classes/core-classes/wizard/";
+              window.scrollTo(0, document.body.scrollHeight);
+            }
+
+          }
+          </script>
+
+          <a id="linkPage" href= "http://www.d20pfsrd.com/classes/core-classes/barbarian/" target="_blank">
+           <img id="image" src="https://aslancross.files.wordpress.com/2008/08/pathfinderbarbarian.jpg" alt="Characters class" style="width:300px;height:500px;">
+          </a>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+
+</body>
+</html>
