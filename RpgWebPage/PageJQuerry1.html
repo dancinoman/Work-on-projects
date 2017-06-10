@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+<title>Pathfinder Classes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script
+ src="https://code.jquery.com/jquery-3.2.1.min.js"
+ integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+
+<style>
+
+h1 {
+    color:white;
+    font-family:verdana;
+    font-size:200%;
+    padding:20px;
+
+}
+body{background-color: #000044; text-align:center;}
+
+p {
+    color:white;
+    font-family:verdana;
+    font-size:150%;
+}
+/*all below is a style for the menu*/
+#menu{
+      border: red 2px solid;
+      background-color: #303098
+
+    }
+ul{
+  padding-left:30px;
+  widht-max: 300px;
+}
+
+li {
+       font-size:45px;
+       display:inline;
+       overflow: hidden;
+       list-style:none;
+       margin: inherit;
+  }
+
+li a {
+
+   padding:20px;
+   color:black;
+   text-decoration: none;
+
+}
+
+li a:hover{
+         background-color:white;
+         text-decoration: none;
+}
+
+
+
+a.default:visited{
+         color:pink
+         }
+a.default:link{
+       color:#307070;
+       text-decoration:none;
+      }
+a.default:hover{
+        color:orange;
+        text-decoration:underline;
+       }
+
+.active{
+  background-color: red;
+}
+
+</style>
+</head>
+<body>
+<div id="menu">
+
+<p>
+    <ul>
+      <li ><a href="#Home" class="menu_link">Home</a></li>
+      <li><a href="#Characters" class="menu_link">Characters Sheet</a></li>
+      <li><a href="#Marketplace" class="menu_link">Markeplace</a></li>
+      <li><a href="#Compendium" class="menu_link">Compendium</a></li>
+      <li><a href="#Wiki" class="menu_link">Wiki RPG</a></li>
+      <li><a href="#Forum" class="menu_link">Forum</a></li>
+    </ul>
+</p>
+
+</div>
+
+
+    <h1><b> Welcome to my very own page!</b></h1>
+        <p> This is my site just to test my skills.<br><br>Thank you!<br><br>
+        Please, click on this site <a class="default" href="http://paizo.com/pathfinderRPG/prd/coreRulebook/gamemastering.html" target="_blank">Gamemastering with pathfinder</a>.<br><br>
+        You could choose the class you want to visit</p>
+
+
+
+    <p><select id="classes" onchange="chara(value)">
+     <option value ="0">Barbarian</option>
+     <option value ="1">Bard</option>
+     <option value ="2">Cleric</option>
+     <option value ="3">Druid</option>
+     <option value ="4">Fighter</option>
+     <option value ="5">Monk</option>
+     <option value ="6">Paladin</option>
+     <option value ="7">Ranger</option>
+     <option value ="8">Rogue</option>
+     <option value ="9">Sorcerer</option>
+     <option value ="10">Wizard</option></select></p>
+
+
+      <a id="linkPage" href= "http://www.d20pfsrd.com/classes/core-classes/barbarian/" target="_blank">
+     <img id="image1" src="https://aslancross.files.wordpress.com/2008/08/pathfinderbarbarian.jpg" alt="Characters class" style="width:300px;height:500px;">
+   </a><br><br><br><br><br>
+   <div id= "dPage"></div>
+
+      <script>
+      //code for the drop down
+      function chara(sw){
+
+         switch(sw){
+                case "0": //Barbarian Selection
+                $("#image1").attr('src','https://aslancross.files.wordpress.com/2008/08/pathfinderbarbarian.jpg');
+                $("#image1").css('width','300px', 'height','500px');
+                $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/barbarian/");
+                $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+                case "1": //Bard Selection
+                   $("#image1").attr('src','http://d20pfsrd.opengamingnetwork.com/wp-content/uploads/sites/12/2017/01/bard_comm_by_yamao-d5ooj9w-320-2.png');
+                   $("#image1").css('width','350px', 'height','500px');
+                   $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/bard/");
+                   $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+                case "2": //Cleric Selection
+                   $("#image1").attr('src','http://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/01/cleric_comm_by_yamao-d5ooj81-320-2.png');
+                   $("#image1").css('width','400px', 'height','500px');
+                   $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/cleric/");
+                   $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                 break;
+                case "3"://Druid Selection
+                    $("#image1").attr('src','http://img.4plebs.org/boards/tg/image/1401/07/1401072392449.jpg');
+                    $("#image1").css('width','400px', 'height','500px');
+                    $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/druid/");
+                    $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                 break;
+               case "4"://Fighter Selection
+                    $("#image1").attr('src','http://68.media.tumblr.com/94fa6c97216f265bfd3de5d12dff11af/tumblr_n2q30bN3Ae1s7x60do1_1280.jpg');
+                    $("#image1").css('width','350px', 'height','500px');
+                    $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/fighter/");
+                    $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "5"://Monk Selection
+                     $("#image1").attr('src','http://d20pfsrd.opengamingnetwork.com/wp-content/uploads/sites/12/2017/01/Pathfinder-Darius-by-Yama-320-2.png');
+                     $("#image1").css('width','300px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/monk/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "6"://Paladin Selection
+                     $("#image1").attr('src','https://s-media-cache-ak0.pinimg.com/736x/84/0a/a6/840aa6026393d8ab878048e62498876a.jpg');
+                     $("#image1").css('width','300px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/paladin/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "7"://Ranger Selection
+                     $("#image1").attr('src','http://vignette1.wikia.nocookie.net/pathfinder/images/8/89/Harsk.jpg/revision/latest?cb=20080602015800');
+                     $("#image1").css('width','350px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/ranger/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "8"://Rogue Selection
+                     $("#image1").attr('src','https://sites.google.com/site/pathfinderogc/_/rsrc/1487036777825/images/rogue__comm_by_yamaorce-d88oizc-320.png');
+                     $("#image1").css('width','300px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/rogue/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "9"://Sorcerer Selection
+                     $("#image1").attr('src','http://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/03/sorceress_by_yamaorce-db2aktf.jpg');
+                     $("#image1").css('width','350px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/sorcerer/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+               case "10"://Wizard Selection
+                     $("#image1").attr('src','https://s-media-cache-ak0.pinimg.com/736x/22/d3/0a/22d30a9e1b867c5a2971d48f87c860da.jpg');
+                     $("#image1").css('width','350px', 'height','500px');
+                     $("#linkPage").attr("href","http://www.d20pfsrd.com/classes/core-classes/wizard/");
+                     $("html, body").animate({scrollTop: $("#dPage").offset.top},);
+                  break;
+              }
+
+         }
+
+       </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+Démarche....
+
+-Voilà mon travail sur l'exercice. J'ai surtout utilisé du Css avec les paragraphes pour avoir des effets visuels.
+      J'aussi fait la programation du Jquerry pour modifié le Css avec des événements.
+            Merci!
