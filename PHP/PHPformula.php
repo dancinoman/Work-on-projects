@@ -2,7 +2,9 @@
 <html>
 <head>
 <style>
-
+.radioSc {
+  padding-left: 40px;
+}
 </style>
 </head>
 <body>
@@ -14,8 +16,8 @@
   Name: <input type="text" name="fname"/></br>
   Sexe:
   <input  type="radio" name="gender" value="female">Female<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="radio" name="gender" value="male">Male </br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="unknown">Unknown</p>
+ <span class="radioSc"><input  type="radio" name="gender" value="male">Male</span> </br>
+ <span class="radioSc"><input type="radio" name="gender" value="unknown">Unknown</span></p>
   Wich  you wish the most?
           <select name = "product">
             <option value="nothing"></option>
@@ -46,7 +48,7 @@
    else {
      $name = validate_input($_POST['fname']);
      $gender = validate_input($_POST['gender']);
-     $prod = $_POST['product'];
+     $prod = validate_input($_POST['product']);
      if ($prod == "nothing"){
        echo "Please enter all the informations";
 

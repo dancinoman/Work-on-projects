@@ -14,8 +14,8 @@
   Name: <input type="text" name="fname"/></br>
   Sexe:
   <input  type="radio" name="gender" value="female">Female<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="radio" name="gender" value="male">Male </br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="unknown">Unknown</p>
+  <input  type="radio" name="gender" value="male">Male </br>
+  <input type="radio" name="gender" value="unknown">Unknown</p>
   Wich  you wish the most?
           <select name = "product">
             <option value="nothing"></option>
