@@ -1,11 +1,12 @@
-
 <?php
-if(isset($_FILES["fileToUpload"])){
-    $target_dir = "uploads/";
-    $target_file = $target_dir. basename($_FILES["fileToUpload"]["name"]);
-    $uploadOK = 1;
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-}
+//Adds custom errors messages
+include("PhpCustomErr.php");
+
+$target_dir = "uploads/";
+$target_file = $target_dir. basename($_FILES["fileToUpload"]["name"]);
+$uploadOK = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
    //check if image file is actual image or fake image
 
 if(isset($_POST["submit"])) {

@@ -49,6 +49,7 @@
      $name = validate_input($_POST['fname']);
      $gender = validate_input($_POST['gender']);
      $prod = validate_input($_POST['product']);
+     print_r($gender);
      if ($prod == "nothing"){
        echo "Please enter all the informations";
 
