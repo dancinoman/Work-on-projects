@@ -12,28 +12,28 @@
 <h1>My first PHP page</h1>
 
 
-<form method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+<form method="POST" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   Name: <input type="text" name="fname"/></br>
   Sexe:
   <input  type="radio" name="gender" value="female">Female<br/>
  <span class="radioSc"><input  type="radio" name="gender" value="male">Male</span> </br>
  <span class="radioSc"><input type="radio" name="gender" value="unknown">Unknown</span></p>
-  Wich  you wish the most?
+  Wich item you wish the most?
           <select name = "product">
             <option value="nothing"></option>
             <option value="motocycle">Motocycle</option>
             <option value="bicycle">Bicycle</option>
             <option  value="noAnswer">None of your business!</option>
           </select></p>
-        <input type="submit">
+        <input type="submit" name='question_submit'>
 
 </form>
 
 <?php
  $name = $gender = $prod = "";
 
- if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+ if(isset($_POST['question_submit']))
    function validate_input($data){
        $data = trim($data);
        $data = stripslashes($data);
