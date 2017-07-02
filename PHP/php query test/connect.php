@@ -1,7 +1,7 @@
 <?php
 
 Class connect{
-  private static $dbconn;
+
     static function connectTo(){
       $log = "root";
       $password = "";
@@ -17,6 +17,7 @@ Class connect{
 
           exit();
       }
+      return $dbconn;
     }
-    return connect::$dbconn;
+
 }
