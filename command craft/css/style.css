@@ -1,0 +1,43 @@
+body{
+	background-image: url("introduction.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+h1{
+	position: absolute;
+  font-size: 90px;
+	left: 30%;
+	display: none;
+}
+
+input{
+	background: transparent;
+	border: none;
+}
+
+.text-page{
+font-size: 39px;
+font-family: monospace;
+color: orange;
+background: #555555;
+}
+
+#command{
+	border: 5px solid orange;
+}
+
+#command-box{
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 50px;
+}
+
+#console{
+font-size: 30px;
+font-family: monospace;
+color: yellow;
+background-color: rgba(100, 100, 100, 0.3);
+width: 100%;
+}

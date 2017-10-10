@@ -1,97 +1,96 @@
-var panel = $("#console");
 
-message ("Welcome in the command block wither storm game. <br/>" +
-							"Please enter a command to execute. <br/>" +
-							"If you want to know more enter /help. <br/>");
-
-function changeImage(image, imageDefaut, secondes)
+function lineStory(lineMessage, milliseconds)
 {
-	$("body").css("background-image", 'url('+ image +')');
-
-	if(secondes != undefined)
-	{
-		setTimeout(function(){
-		$("body").css("background-image", 'url('+ imageDefaut +')');
-		}, secondes);
-		}
+	if(devmode){
+		milliseconds = 0;
 	}
+	$.each(lineMessage, function(i, value){
+		cons.delay(milliseconds)
+				.queue(function(){
+					$(this).append(value + "<br/>").dequeue();
+				});
+	});
+}
 
-function message(message)
+function oneLine(lineMessage, milliseconds){
+	if(devmode){
+		milliseconds = 0;
+	}
+	cons.delay(milliseconds)
+			.queue(function(){
+				$(this).append(lineMessage + "<br/>").dequeue();
+			});
+}
+
+function inputEvent(triggerIntro){
+
+	$("#command").keypress(function(event){
+		if(event.which == 13)
+		{
+			match = $("#command").val();
+
+			if(match == "")
+			{
+				return false;
+			}
+
+			storyEvent(match, triggerIntro);
+
+			$(this).val("");
+		}
+	});
+
+}
+
+function storyEvent(match, trigger)
 {
-		panel.append("<span>"+ message +"</span><br/>");
+	//a test to match the player input for the behavior
+$.each(trigger, function(i, val){
+
+	trigger = matchMaker(trigger);
+	match = matchMaker(match);
+
+	if(val.match(match) || match.match(val))
+	{
+		lineStory(["I guess its good, come closer"], 1000);
+		switchScene();
+		lineEventEnd = true;
+
+		return false;
+	}
+	else{
+		reply = ["Don't make me repeat! Once again, can you hear me?",
+							"Yes, I can hear you, do you copy?",
+							"Do you wear ear plugs? This is confusing, isn'it?"];
+		linEventEnd = false;
+			oneLine(reply[randomIndex(reply)], 1000);
+			return false;
+	}
+});
+}
+
+function switchScene(){
+
+	$("body").delay(1500).queue(function(){
+		$(this).css("background-image", "url('css/scene1')");
+	});
 }
 
 
-$("#message").keypress(function(event){
+//tools for develop
+function matchMaker(tag)
+{
+  if(tag)
+  {
+		var tag = tag.toString();
+    var tagNoSpace = tag.replace(/ +/g, "");
+    var novaTag = tagNoSpace.toLowerCase();
+    return novaTag;
+  }
+}
 
-	if(event.which == 13)
-	{
-		var commande = $("#message").val();
-		var panel = $("#console");
-
-		if(commande)
-		{
-			switch (commande)
-			{
-				case "/clear chat":
-
-					$("#console").empty();
-
-					break;
-
-				case "/help":
-
-					message("/summon 'monster' will appear the monster");
-
-					break;
-
-				case "/summon zombie":
-
-					changeImage("zombie.jpg", "wither_command_block.jpg", 2000);
-
-					message("")
-
-					break;
-
-				case "/summon wither storm":
-
-						changeImage("wither_storm.jpg", "wither_command_block.jpg", 2000);
-
-						message("Attention un wither storm! Es-tu fou? Je remets comme avant")
-
-					break;
-
-				case "/destroy command block":
-
-					changeImage("wither.jpg", "wither_command_block.jpg", 2000);
-
-					message("Attention un wither! Non! Il est mieux avec un bloc!");
-
-					break;
-
-				case "/enter wither storm":
-
-					changeImage("wither_storm_command_block.jpg", "wither_command_block.jpg", 2000);
-
-					message("Ça t'arrive souvent de rentre dans la tête des gens?");
-
-					break;
-
-				case "/time set night":
-
-					changeImage("nuit.jpg", "wither_command_block.jpg");
-
-					message("La nuit est tombé...");
-
-					break;
-
-				default:
-
-					message("commande inconnu");
-
-				}
-		}
-
-		$("#message").val('');
-	}
-});
+function randomIndex(arr)
+{
+	number = Math.floor(Math.random() * arr.length);
+	return number;
+}
