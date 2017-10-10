@@ -1,0 +1,29 @@
+<html>
+<body>
+	<p>People</p>
+	<p> console log test</p>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous" type="text/javascript"></script>
+
+<script type="text/javascript">
+	function people(name){
+		this.id = name;
+		this.expression = function(ex){
+			var expression = "hello I would like to say this " + ex;
+			return expression;
+		}
+	}
+
+	Meli = new people("Melissa");
+
+				//call class
+
+				console.log(Meli.id);
+				console.log(Meli.expression("I love you"));
+
+
+</script>

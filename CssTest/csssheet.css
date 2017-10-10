@@ -1,0 +1,23 @@
+
+.header{
+	position: relative;
+	text-align: center;
+	font-size: 45px;
+	font-weight: 200;
+	background-color: powderblue;
+	height: 200px;
+}
+
+#text-header{
+	position: absolute;
+	background-color: white;
+	top: 50%;
+}
+
+.ui{
+	background-color: #00acef;
+}
+
+.centered{	
+	text-align: center;
+}

@@ -1,0 +1,53 @@
+<html>
+<body>
+	<p> Pizza </p>
+
+	<ul id="init">
+	</ul>
+
+	<label for="custom_choice">What is your ingredient to add on pizza?</label>
+	<input type="text" id="custom-choice" name="custom_choice">
+
+	<button id="add-ingredient">Add Ingredient</button>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+
+
+	$("body").on("click", "#add-ingredient", function(){
+
+		var ingredient = $("#custom-choice").val();
+		console.log($.type(ingredient));
+
+		list({
+					tomatoSauce: true,
+					cooke: true,
+					minIngredient: 1
+			}, {
+					firstIngredient: 'cheese',
+					source: customerChoice(ingredient)
+			});
+	});
+
+console.log("list is a " + $.type(list));
+
+function customerChoice(option){
+	if($.type(option) !== "string"){
+		return false;
+		console.log("is not a string");
+	}
+	else{
+		return option;
+	}
+}
+
+function list(one, two){
+	console.log(two.source);
+}
+
+</script>
