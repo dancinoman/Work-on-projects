@@ -1,3 +1,15 @@
+//setting ajax
+
+
+$.ajax({
+		url: 'mainString.php',
+		dataType: 'JSON',
+		success: function(str){
+			console.log("lets play!");
+			main(str);
+		}
+})
+
 //setting devmode
 devmode = false;
 
@@ -5,12 +17,16 @@ devmode = false;
 var cons = $("#console");
 var h1 = $("h1");
 var lineEventEnd = false;
+
 //main game
-introduction();
-scene1();
+function main(str){
+	introduction(str);
+}
 
 
-function introduction()
+
+
+function introduction(str)
 {
 
 	//smooth title generic
@@ -18,23 +34,13 @@ function introduction()
 		$(this).delay(2000).fadeOut(5000);
 	});
 
-	var Msgintro = [
-				"This is not happening...",
-				"Godamn! Why am I doing this...",
-				"Hello! Can you hear me?"];
-
-	var triggerIntro = ["yes", "yeah", "affirmative"];
 
 	if(lineEventEnd)
 	{
-		triggerIntro = [];
+		str.trig_intro = [];
 	}
-  lineStory(Msgintro, 3000);
-	inputEvent(triggerIntro);
 
-}
-
-function scene1()
-{
+  lineStory(str.msg_intro, 3000);
+	inputEvent(str.trig_intro, str.valid_intro, str.unvalid_intro);
 
 }

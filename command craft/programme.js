@@ -22,19 +22,19 @@ function oneLine(lineMessage, milliseconds){
 			});
 }
 
-function inputEvent(triggerIntro){
+function inputEvent(triggerIntro, validMsg, UnvalidMsg){
 
 	$("#command").keypress(function(event){
 		if(event.which == 13)
 		{
 			match = $("#command").val();
-
+			cons.append("<span style='color: #fe6626'>" + match + "</span><br/>");
 			if(match == "")
 			{
 				return false;
 			}
 
-			storyEvent(match, triggerIntro);
+			storyEvent(match, triggerIntro, validMsg, UnvalidMsg);
 
 			$(this).val("");
 		}
@@ -42,7 +42,7 @@ function inputEvent(triggerIntro){
 
 }
 
-function storyEvent(match, trigger)
+function storyEvent(match, trigger,validMsg, UnvalidMsg)
 {
 	//a test to match the player input for the behavior
 $.each(trigger, function(i, val){
@@ -52,18 +52,16 @@ $.each(trigger, function(i, val){
 
 	if(val.match(match) || match.match(val))
 	{
-		lineStory(["I guess its good, come closer"], 1000);
+		lineStory(validMsg, 1000);
 		switchScene();
 		lineEventEnd = true;
 
 		return false;
 	}
 	else{
-		reply = ["Don't make me repeat! Once again, can you hear me?",
-							"Yes, I can hear you, do you copy?",
-							"Do you wear ear plugs? This is confusing, isn'it?"];
+
 		linEventEnd = false;
-			oneLine(reply[randomIndex(reply)], 1000);
+			oneLine(UnvalidMsg[randomIndex(UnvalidMsg)], 1000);
 			return false;
 	}
 });
@@ -72,7 +70,7 @@ $.each(trigger, function(i, val){
 function switchScene(){
 
 	$("body").delay(1500).queue(function(){
-		$(this).css("background-image", "url('css/scene1')");
+		$(this).css("background-image", "url('css/begining')");
 	});
 }
 
