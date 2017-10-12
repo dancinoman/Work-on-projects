@@ -1,6 +1,4 @@
 //setting ajax
-
-
 $.ajax({
 		url: 'mainString.php',
 		dataType: 'JSON',
@@ -12,6 +10,10 @@ $.ajax({
 
 //setting devmode
 devmode = false;
+//set inputAvailable
+commandAvailable = false;
+//defining command input
+match = $("#command");
 
 //declaring variables
 var cons = $("#console");
@@ -22,9 +24,6 @@ var lineEventEnd = false;
 function main(str){
 	introduction(str);
 }
-
-
-
 
 function introduction(str)
 {
@@ -40,7 +39,7 @@ function introduction(str)
 		str.trig_intro = [];
 	}
 
-  lineStory(str.msg_intro, 3000);
+  lineStory(str.msg_intro, 3000, true);
 	inputEvent(str.trig_intro, str.valid_intro, str.unvalid_intro);
 
 }

@@ -1,68 +1,81 @@
 
-function lineStory(lineMessage, milliseconds)
+function lineStory(lineMessage, milliseconds, boolCommand)
 {
-	if(devmode){
-		milliseconds = 0;
-	}
+	console.log("npc talking");
+	if(devmode){ milliseconds = 0; }
+
 	$.each(lineMessage, function(i, value){
 		cons.delay(milliseconds)
 				.queue(function(){
-					$(this).append(value + "<br/>").dequeue();
-				});
+					$(this).append(value + "<br/>");
+				})
+				.dequeue()
+				.queue(function(){
+					commandAvailable = boolCommand;
+					console.log("command ready is " + commandAvailable);
+				})
+				.dequeue();
 	});
+
+
 }
 
 function oneLine(lineMessage, milliseconds){
-	if(devmode){
-		milliseconds = 0;
-	}
+
+	if(devmode){ milliseconds = 0; }
+
 	cons.delay(milliseconds)
 			.queue(function(){
 				$(this).append(lineMessage + "<br/>").dequeue();
 			});
 }
 
-function inputEvent(triggerIntro, validMsg, UnvalidMsg){
+function inputEvent(triggerIntro, validMsg, unvalidMsg){
 
 	$("#command").keypress(function(event){
-		if(event.which == 13)
+
+		if(event.which == 13 && commandAvailable == true)
 		{
-			match = $("#command").val();
-			cons.append("<span style='color: #fe6626'>" + match + "</span><br/>");
+
+			cons.append("<span style='color: #fe6626'>" + match.val() + "</span><br/>");
 			if(match == "")
 			{
 				return false;
 			}
+			//send user msg to triggering event
+			storyEvent(match.val(), triggerIntro, validMsg, unvalidMsg);
 
-			storyEvent(match, triggerIntro, validMsg, UnvalidMsg);
+			$(this).val("");
 
+		} else if(event.which == 13 && commandAvailable == false){
 			$(this).val("");
 		}
 	});
 
 }
 
-function storyEvent(match, trigger,validMsg, UnvalidMsg)
+function storyEvent(match, trigger,validMsg, unvalidMsg)
 {
+
 	//a test to match the player input for the behavior
 $.each(trigger, function(i, val){
 
 	trigger = matchMaker(trigger);
 	match = matchMaker(match);
-
+	console.log(val);
 	if(val.match(match) || match.match(val))
 	{
-		lineStory(validMsg, 1000);
+		console.log("did match");
+		lineStory(validMsg, 1000, false);
 		switchScene();
 		lineEventEnd = true;
-
 		return false;
 	}
 	else{
 
 		linEventEnd = false;
-			oneLine(UnvalidMsg[randomIndex(UnvalidMsg)], 1000);
-			return false;
+		oneLine(unvalidMsg[randomIndex(unvalidMsg)], 1000);
+		return false;
 	}
 });
 }
@@ -91,4 +104,11 @@ function randomIndex(arr)
 {
 	number = Math.floor(Math.random() * arr.length);
 	return number;
+}
+
+function boolCommand(bool){
+	if(bool)
+	 	{
+
+		}
 }
