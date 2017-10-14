@@ -9,6 +9,7 @@ console.log("devmode is : " + fastmode);
 //set inputAvailable
 commandAvailable = false;
 
+playerNameTemp = "";
 playerName = "";
 //defining command input
 match = $("#command");
@@ -51,12 +52,15 @@ function introduction()
 function begining(){
 
 	if(lineEventEnd == 2){
-		str.trig_intro = str.valid_intro = str.unvalid_intro = [];
+		
 			$("body").delay(1500).queue(function(){
 			$(this).css("background-image", "url('css/begining')");
 		});
 
 		lineStory(str.msg_begining, 2000, true);
+
+	}
+	else if(lineEvent == 4){
 
 	}
 
