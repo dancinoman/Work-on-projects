@@ -2,15 +2,15 @@
 //setting devmode
 devmode = true;
 //fastmode words only if devmode is false
-fastmode = true;
+fastmode = false;
 
 console.log("devmode is : " + devmode);
 console.log("devmode is : " + fastmode);
 //set inputAvailable
 commandAvailable = false;
+//usefull game stats variables
+gameStats = { playerNameTemp : "", playerName : "", npcRat : "Kezak"}
 
-playerNameTemp = "";
-playerName = "";
 //defining command input
 match = $("#command");
 //put str to global scope
@@ -52,15 +52,15 @@ function introduction()
 function begining(){
 
 	if(lineEventEnd == 2){
-		
-			$("body").delay(1500).queue(function(){
+
+			$("body").delay(2500).queue(function(){
 			$(this).css("background-image", "url('css/begining')");
 		});
 
-		lineStory(str.msg_begining, 2000, true);
+		lineStory(str.msg_begining1, 2000, true);
 
 	}
-	else if(lineEvent == 4){
+	else if(lineEventEnd == 4){
 
 	}
 
