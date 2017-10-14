@@ -17,15 +17,25 @@ input{
 	border: none;
 }
 
-.text-page{
-font-size: 39px;
-font-family: monospace;
-color: orange;
-background: #555555;
+.player-color{
+	color: #fe6626;
+}
+
+.command-active{
+	border: 5px solid orange;
+	background-color: #795500;
+	color: orange;
+}
+
+.command-inactive{
+	border: 5px solid gray;
+	background-color: #555555;
+	color: black;
 }
 
 #command{
-	border: 5px solid orange;
+	font-size: 39px;
+	font-family: monospace;
 }
 
 #command-box{
