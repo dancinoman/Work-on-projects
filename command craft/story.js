@@ -1,6 +1,6 @@
 
 //setting devmode
-devmode = true;
+devmode = false;
 //fastmode words only if devmode is false
 fastmode = false;
 
@@ -53,15 +53,15 @@ function begining(){
 
 	if(lineEventEnd == 2){
 
-			$("body").delay(2500).queue(function(){
+			$("body").delay(1000).queue(function(){
 			$(this).css("background-image", "url('css/begining')");
 		});
 
-		lineStory(str.msg_begining1, 2000, true);
+		lineStory(str.msg_begining1, 3000, true);
 
 	}
 	else if(lineEventEnd == 4){
-		lineStory(str.msg_begining2, 2000, true);
+		lineStory(str.msg_begining2, 2500, true);
 	}
 
 }
