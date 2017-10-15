@@ -5,13 +5,17 @@ function ObjectStr(objectId)
 			this.trigger = str.affirmative_trigger;
 		  this.valid = str.valid_intro;
 		  this.unvalid = str.unvalid_intro;
+			this.callback = begining;
 			break;
 		case 3://player naming
 			this.trigger = str.affirmative_trigger;
 			this.valid = str.valid_replyname_begining;
 			this.unvalid = "";
+			this.callback = begining;
 			break;
-
+		case 4: //player opinion
+			this.ptrigger = str.positive_trigger;
+			this.ntrigger = str.negative_trigger;
 		default:
 				console.log("no trigger valid");
 			break;
@@ -24,7 +28,6 @@ function lineStory(lineMessage, milliseconds, bool)
 	if(devmode){ milliseconds = 0; }
 	else if(fastmode){ milliseconds = 1000; };
 
-	console.log(lineMessage);
 	var length = lineMessage.length - 1;
 
 	$.each(lineMessage, function(i, value){
@@ -61,11 +64,15 @@ $("#command").keypress(function(event){
 		}
 		else if (lineEventEnd == 3)
 		{
-			definePlayerName(match.val(), eventSet.trigger, eventSet.valid);
+			definePlayerName(match.val(), eventSet.trigger, eventSet.valid, eventSet.callback);
+		}
+		else if (lineEventEnd == 4)
+		{
+			storyEventOpinion(match.val(), eventSet.ptrigger, eventSet.ntrigger)
 		}
 		else
 		{
-			storyEvent(match.val(), eventSet.trigger,	eventSet.valid, eventSet.unvalid,	begining);
+			storyEvent(match.val(), eventSet.trigger,	eventSet.valid, eventSet.unvalid,	eventSet.callback);
 		}
 
 		//reset the val input
@@ -106,7 +113,30 @@ function storyEvent(match, trigger, validMsg, unvalidMsg, switchingScene)
 	});
 }
 
-function definePlayerName(match, trigger, validMsg){
+function storyEventOpinion(match, pos, neg)
+{
+	var length = pos.length -1;
+	console.log(pos);
+
+	//a test to match the player input for the behavior
+	$.each(pos, function(i, val){
+
+	val = matchMaker(val);
+	match = matchMaker(match);
+
+		if(val.match(match) || match.match(val))
+		{
+			console.log("message is positive");
+			return false;
+		}
+		else if(i >= length && (!val.match(match) || match.match(val))) {
+			console.log("message is negative");
+			return false;
+		}
+	});
+}
+
+function definePlayerName(match, trigger, validMsg, switchingScene){
 
 	var length = trigger.length -1;
 
@@ -125,6 +155,7 @@ function definePlayerName(match, trigger, validMsg){
 			lineStory([arr], 1000, true);
 			gameStats.playerName = gameStats.playerNameTemp + ": ";
 			lineEventEnd ++;
+			switchingScene();
 			return false;
 		}
 		else if(i >= length && (!val.match(match) || match.match(val))) {

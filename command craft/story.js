@@ -61,7 +61,7 @@ function begining(){
 
 	}
 	else if(lineEventEnd == 4){
-
+		lineStory(str.msg_begining2, 2000, true);
 	}
 
 }
