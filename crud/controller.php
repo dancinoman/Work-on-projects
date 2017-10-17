@@ -1,6 +1,5 @@
 <?php
 
-
 include 'queries.php';
 include 'connection.php';
 
@@ -9,17 +8,16 @@ $conn = Connexion::dbConnect();
 $info_query = new CRUD($conn);
 
 $fetchinfo = $info_query->fetchInfo();
-
 if(!isset($fetchinfo)){
 	echo "cannot fetch info";
 }
 
+//ajax controller
 if(!isset($_POST['action']))
 {
-	return false;
+	return $fetchinfo = $info_query->fetchInfo();
 }
 
-//ajax controller
 
 switch($_POST['action']){
 	case 'edit_info':
@@ -28,6 +26,9 @@ switch($_POST['action']){
 	case 'delete_info':
 	 echo json_encode(deleteInfo($_POST));
 	 break;
+	case 'create_info':
+		echo json_encode(createInfo($_POST));
+	break;
 	default:
 		echo "no action sent";
 		break;
@@ -51,4 +52,10 @@ function deleteInfo($post){
 
 	$deleteinfo = $info_query->deleteBy($id);
 
+}
+
+function createInfo($post){
+	global $info_query;
+
+	$createinfo = $info_query->createNew($post);
 }

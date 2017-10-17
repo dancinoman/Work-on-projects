@@ -60,7 +60,26 @@
 
 		$stmt = $this->conn->prepare($query);
 
-		if(!$stmt){ exit(); }
+		if(!$stmt->execute()){ exit(); }
 
+	}
+
+	function createNew($arr){
+
+		unset($arr['action']);
+
+		$keys = array_keys($arr);
+
+		$column = implode(", ", $keys);
+
+		$query = "INSERT INTO `practice` ($column) VALUES (?, ?, ?)";
+
+		$stmt= $this->conn->prepare($query);
+
+		$stmt->bindParam(1, $arr[$keys[0]]);
+		$stmt->bindParam(2, $arr[$keys[1]]);
+		$stmt->bindParam(3, $arr[$keys[2]]);
+
+		if(!$stmt->execute()) exit();
 	}
 }
