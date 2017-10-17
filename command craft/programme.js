@@ -14,8 +14,11 @@ function ObjectStr(objectId)
 			this.callback = begining;
 			break;
 		case 4: //player opinion
-			this.ptrigger = str.positive_trigger;
-			this.ntrigger = str.negative_trigger;
+			this.postrigger = str.positive_trigger;
+			this.negtrigger = str.negative_trigger;
+			this.posreply = str.positive_reply;
+			this.negreply = str.negative_reply;
+			this.neureply = str.neutral_reply;
 		default:
 				console.log("no trigger valid");
 			break;
@@ -68,7 +71,7 @@ $("#command").keypress(function(event){
 		}
 		else if (lineEventEnd == 4)
 		{
-			storyEventOpinion(match.val(), eventSet.ptrigger, eventSet.ntrigger)
+			storyEventOpinion(match.val(), eventSet.postrigger, eventSet.negtrigger, eventSet.posreply, eventSet.negreply, eventSet.neureply)
 		}
 		else
 		{
@@ -113,27 +116,51 @@ function storyEvent(match, trigger, validMsg, unvalidMsg, switchingScene)
 	});
 }
 
-function storyEventOpinion(match, pos, neg)
+function storyEventOpinion(match, postrig, negtrig, posrep, negrep, neurep)
 {
-	var length = pos.length -1;
-	console.log(pos);
+	var length = postrig.length -1;
+	console.log(postrig);
+	console.log(negtrig);
 
 	//a test to match the player input for the behavior
-	$.each(pos, function(i, val){
+	$.each(postrig, function(i, val){
 
 	val = matchMaker(val);
 	match = matchMaker(match);
 
 		if(val.match(match) || match.match(val))
 		{
-			console.log("message is positive");
+			if(match.match("not") || match.match("no") || match.match("don't")){
+				lineStory([negrep[randomIndex(negrep)]], 1000, true);
+			}
+			else {
+				lineStory([posrep[randomIndex(posrep)]], 1000, true);
+			}
 			return false;
-		}
+		}//then check in negative sentence
 		else if(i >= length && (!val.match(match) || match.match(val))) {
-			console.log("message is negative");
-			return false;
+			$.each(negtrig, function(i, val){
+				if(val.match(match) || match.match(val)){
+					if(match.match("not") || match.match("no")){
+						lineStory([neurep[randomIndex(neurep)]], 1000, true);
+					}
+					else{
+						lineStory([negrep[randomIndex(negrep)]], 1000, true);
+					}
+					return false;
+				}
+				else{
+					lineStory([neurep[randomIndex(neurep)]], 1000, true);
+					return false;
+				}
+			});
 		}
+
+
+
 	});
+
+
 }
 
 function definePlayerName(match, trigger, validMsg, switchingScene){
