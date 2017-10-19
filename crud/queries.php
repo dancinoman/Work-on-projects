@@ -76,10 +76,17 @@
 
 		$stmt= $this->conn->prepare($query);
 
+
+
 		$stmt->bindParam(1, $arr[$keys[0]]);
 		$stmt->bindParam(2, $arr[$keys[1]]);
 		$stmt->bindParam(3, $arr[$keys[2]]);
 
 		if(!$stmt->execute()) exit();
+
+		$lastId = $this->conn->lastInsertId();
+
+		return $lastId;
 	}
+
 }

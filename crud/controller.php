@@ -8,17 +8,20 @@ $conn = Connexion::dbConnect();
 $info_query = new CRUD($conn);
 
 $fetchinfo = $info_query->fetchInfo();
+
+
+//handling errors
 if(!isset($fetchinfo)){
 	echo "cannot fetch info";
 }
 
-//ajax controller
 if(!isset($_POST['action']))
 {
-	return $fetchinfo = $info_query->fetchInfo();
+	return false;
 }
 
 
+//ajax controller
 switch($_POST['action']){
 	case 'edit_info':
 		echo json_encode(editInfo($_POST));
@@ -30,7 +33,7 @@ switch($_POST['action']){
 		echo json_encode(createInfo($_POST));
 	break;
 	default:
-		echo "no action sent";
+		echo json_encode(array("error" => "no action sent"));
 		break;
 	}
 
@@ -42,6 +45,7 @@ function editInfo($post){
 
 	$updateinfo = $info_query->update($post);
 
+	return $post;
 }
 
 function deleteInfo($post){
@@ -52,10 +56,15 @@ function deleteInfo($post){
 
 	$deleteinfo = $info_query->deleteBy($id);
 
+	return $post;
 }
 
 function createInfo($post){
 	global $info_query;
 
 	$createinfo = $info_query->createNew($post);
+
+	$post['pt_id'] = $createinfo;
+
+	return $post;
 }
